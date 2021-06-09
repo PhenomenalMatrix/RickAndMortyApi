@@ -27,10 +27,10 @@ interface RickAndMortyApiService {
     @GET("/api/character/{id}")
     suspend fun fetchCharactersId(@Path("id") postid: Int): Response<Character>
 
-    @GET("/api/location")
-    suspend fun fetchLocationsId(@Query("id") id: Int): Response<MainResponse<LocationModel>>
+    @GET("/api/location/{id}")
+    suspend fun fetchLocationsId(@Path("id") id: Int): Response<LocationModel>
 
-    @GET("/api/episode")
-    suspend fun fetchEpisodesId(@Query("id") id: Int):Response<MainResponse<Episodes>>
+    @GET("/api/episode/{id}")
+    suspend fun fetchEpisodesId(@Path("id") id: Int):Response<Episodes>
 
 }

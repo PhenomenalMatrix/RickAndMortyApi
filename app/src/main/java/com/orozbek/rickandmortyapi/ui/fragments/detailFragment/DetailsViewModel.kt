@@ -11,10 +11,10 @@ class DetailsViewModel(private val repository: Repository): BaseViewModel(){
     fun fetchCharactersId(id: Int): LiveData<Resource<Character>> {
         return repository.fetchRickAndMortyApiCharactersId(id)
     }
-    fun fetchLocationId(id: Int): LiveData<Resource<MainResponse<LocationModel>>> {
+    fun fetchLocationId(id: Int): LiveData<Resource<LocationModel>> {
         return repository.fetchRickAndMortyApiLocationsId(id)
     }
-    fun fetchEpisodeId(id: Int): LiveData<Resource<MainResponse<Episodes>>> {
+    fun fetchEpisodeId(id: Int): LiveData<Resource<Episodes>> {
         return repository.fetchRickAndMortyApiEpisodesId(id)
     }
 

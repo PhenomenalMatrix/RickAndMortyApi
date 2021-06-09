@@ -52,13 +52,13 @@ class Repository (private val dataSource: RemoteDataSource){
         emit(response)
     }
 
-    fun fetchRickAndMortyApiLocationsId(id:Int): LiveData<Resource<MainResponse<LocationModel>>> = liveData (Dispatchers.IO ){
+    fun fetchRickAndMortyApiLocationsId(id:Int): LiveData<Resource<LocationModel>> = liveData (Dispatchers.IO ){
         emit(Resource.loading(null))
         val response = dataSource.fetchLocationsId(id)
         emit(response)
     }
 
-    fun fetchRickAndMortyApiEpisodesId(id:Int): LiveData<Resource<MainResponse<Episodes>>> = liveData (Dispatchers.IO){
+    fun fetchRickAndMortyApiEpisodesId(id:Int): LiveData<Resource<Episodes>> = liveData (Dispatchers.IO){
         emit(Resource.loading(null))
         val response = dataSource.fetchEpisodesId(id)
         emit(response)
