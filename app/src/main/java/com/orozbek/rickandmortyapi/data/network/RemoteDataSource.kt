@@ -31,4 +31,16 @@ class RemoteDataSource(private val apiService: RickAndMortyApiService): BaseData
         apiService.fetchFilteredDataEpisode(name)
     }
 
+    suspend fun fetchCharactersId(id: Int) = getResult {
+        apiService.fetchCharactersId(id)
+    }
+
+    suspend fun fetchLocationsId(id: Int) = getResult {
+        apiService.fetchLocationsId(id)
+    }
+
+    suspend fun fetchEpisodesId(id: Int) = getResult {
+        apiService.fetchEpisodesId(id)
+    }
+
 }

@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import com.orozbek.rickandmortyapi.R
 import com.orozbek.rickandmortyapi.data.network.Status
 import com.orozbek.rickandmortyapi.databinding.FragmentSearchBinding
 import com.orozbek.rickandmortyapi.models.Character
@@ -45,6 +47,7 @@ class SearchFragment : Fragment(), SearchAdapter.OnItemClickListener {
 
     private fun initialize() {
         binding.searchRv.adapter = adapter
+        adapter.addListener(this)
     }
 
     private fun setupViews() {
@@ -95,7 +98,10 @@ class SearchFragment : Fragment(), SearchAdapter.OnItemClickListener {
     }
 
     override fun onClick(id: Int, type: Int) {
-
+        val bundle = Bundle()
+        bundle.putInt("idKey",id)
+        bundle.putInt("typeKey",type)
+        findNavController().navigate(R.id.detailsFragment,bundle)
     }
 
 

@@ -1,6 +1,7 @@
 package com.orozbek.rickandmortyapi.di
 
 import com.orozbek.rickandmortyapi.ui.fragments.charterFragment.CharactersViewModel
+import com.orozbek.rickandmortyapi.ui.fragments.detailFragment.DetailsViewModel
 import com.orozbek.rickandmortyapi.ui.fragments.episodeFragment.EpisodeViewModel
 import com.orozbek.rickandmortyapi.ui.fragments.locationFragmnet.LocationViewModel
 import com.orozbek.rickandmortyapi.ui.fragments.searchFragment.SearchViewModel
@@ -13,4 +14,5 @@ val viewModules: Module = module {
     viewModel { EpisodeViewModel(get()) }
     viewModel { LocationViewModel(get()) }
     viewModel { SearchViewModel(get()) }
+    viewModel { DetailsViewModel(get()) }
 }

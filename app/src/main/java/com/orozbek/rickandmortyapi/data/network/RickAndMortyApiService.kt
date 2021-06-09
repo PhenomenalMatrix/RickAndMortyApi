@@ -2,10 +2,10 @@ package com.orozbek.rickandmortyapi.data.network
 
 import com.orozbek.rickandmortyapi.models.*
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface RickAndMortyApiService {
+
     @GET("/api/character")
     suspend fun fetchCharacters(@Query("page") page: Int): Response<MainResponse<Character>>
 
@@ -23,5 +23,14 @@ interface RickAndMortyApiService {
     
     @GET("/api/episode")
     suspend fun fetchFilteredDataEpisode(@Query("name") name: String): Response<MainResponse<Character>>
+
+    @GET("/api/character/{id}")
+    suspend fun fetchCharactersId(@Path("id") postid: Int): Response<Character>
+
+    @GET("/api/location")
+    suspend fun fetchLocationsId(@Query("id") id: Int): Response<MainResponse<LocationModel>>
+
+    @GET("/api/episode")
+    suspend fun fetchEpisodesId(@Query("id") id: Int):Response<MainResponse<Episodes>>
 
 }
