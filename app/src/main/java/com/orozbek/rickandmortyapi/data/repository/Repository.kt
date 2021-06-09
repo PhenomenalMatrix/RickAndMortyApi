@@ -4,11 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.orozbek.rickandmortyapi.data.network.RemoteDataSource
 import com.orozbek.rickandmortyapi.data.network.Resource
-import com.orozbek.rickandmortyapi.models.MainResponse
-import com.orozbek.rickandmortyapi.models.Character
-import com.orozbek.rickandmortyapi.models.Episodes
-import com.orozbek.rickandmortyapi.models.LocationModel
+import com.orozbek.rickandmortyapi.models.*
 import kotlinx.coroutines.Dispatchers
+import com.orozbek.rickandmortyapi.models.GeneralModel
 
 class Repository (private val dataSource: RemoteDataSource){
 
@@ -29,4 +27,21 @@ class Repository (private val dataSource: RemoteDataSource){
         val response = dataSource.fetchEpisodes(page)
         emit(response)
     }
+
+    fun fetchRickAndMortyApiFilteredData(name: String): LiveData<Resource<MainResponse<Character>>> = liveData (Dispatchers.IO ) {
+        emit(Resource.loading(null))
+        val response = dataSource.fetchFilteredData(name)
+        emit(response)
+    }
+    fun fetchRickAndMortyApiFilteredDataLoc(name: String): LiveData<Resource<MainResponse<Character>>> = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        val response = dataSource.fetchFilteredDataloc(name)
+        emit(response)
+    }
+    fun fetchRickAndMortyApiFilteredDataEpi(name: String): LiveData<Resource<MainResponse<Character>>> = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        val response = dataSource.fetchFilteredDataEpi(name)
+        emit(response)
+    }
+
 }

@@ -1,14 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.searchFragment.SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<com.google.android.material.appbar.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/white"
+    android:gravity="center"
+    >
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/search_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/search_et"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            />
+        <Button
+            android:id="@+id/search_btn"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="search"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/textField"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:backgroundTint="@color/smock_black"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+</com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginTop="125dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/charters_item"
+        />
 
-</FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

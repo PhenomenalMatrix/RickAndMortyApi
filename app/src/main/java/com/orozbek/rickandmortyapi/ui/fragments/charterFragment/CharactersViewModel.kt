@@ -4,13 +4,14 @@ import androidx.lifecycle.LiveData
 import com.orozbek.rickandmortyapi.App
 import com.orozbek.rickandmortyapi.base.BaseViewModel
 import com.orozbek.rickandmortyapi.data.network.Resource
+import com.orozbek.rickandmortyapi.data.repository.Repository
 import com.orozbek.rickandmortyapi.models.MainResponse
 import com.orozbek.rickandmortyapi.models.Character
 
-class ChatersViewModel : BaseViewModel(){
+class CharactersViewModel(private val repository: Repository) : BaseViewModel(){
 
     fun fetchCharacters(page: Int): LiveData<Resource<MainResponse<Character>>>{
-        return App.repository.fetchRickAndMortyApiCharacters(page)
+        return repository.fetchRickAndMortyApiCharacters(page)
     }
 
 }

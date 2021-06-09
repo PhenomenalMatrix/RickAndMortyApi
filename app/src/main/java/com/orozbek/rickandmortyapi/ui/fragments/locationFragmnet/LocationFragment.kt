@@ -5,12 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.orozbek.rickandmortyapi.R
 import com.orozbek.rickandmortyapi.data.network.Status
-import com.orozbek.rickandmortyapi.databinding.FragmentCharacterBinding
 import com.orozbek.rickandmortyapi.databinding.FragmentLocationBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class LocationFragment : Fragment() {
@@ -18,7 +17,7 @@ class LocationFragment : Fragment() {
     private var _binding: FragmentLocationBinding? = null
     private val binding get() = _binding!!
     private val locAdapter = LocationAdapter()
-    private lateinit var viewModel: LocationViewModel
+    private val viewModel: LocationViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,11 +35,17 @@ class LocationFragment : Fragment() {
     }
 
     private fun initialize() {
-        viewModel = ViewModelProvider(this).get(LocationViewModel::class.java)
         viewModel.fetchLocation(1).observe(viewLifecycleOwner, Observer {resource ->
             when(resource.status){
                 Status.SUCCESS -> {
                     resource.data?.results?.let { locAdapter.addItems(it) }
+                    binding.locationProgressBar.visibility = View.GONE
+                }
+                Status.LOADING ->{
+                    binding.locationProgressBar.visibility = View.VISIBLE
+                }
+                Status.ERROR ->{
+                    Toast.makeText(requireContext(),"Error", Toast.LENGTH_SHORT).show()
                 }
             }
         })

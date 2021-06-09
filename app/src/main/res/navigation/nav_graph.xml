@@ -25,4 +25,9 @@
         android:name="com.orozbek.rickandmortyapi.ui.fragments.searchFragment.SearchFragment"
         android:label="Search"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.orozbek.rickandmortyapi.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
 </navigation>
