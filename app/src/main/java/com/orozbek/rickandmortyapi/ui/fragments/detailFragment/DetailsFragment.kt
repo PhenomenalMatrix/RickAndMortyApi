@@ -20,7 +20,6 @@ class DetailsFragment : Fragment() {
     private val binding get() = _binding!!
     private var idItem: Int = 0
     private var type: Int = 0
-    private var list: ArrayList<Any> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -111,11 +110,6 @@ class DetailsFragment : Fragment() {
     }
 
     private fun setupViews() {
-        Toast.makeText(
-            requireContext(),
-            idItem.toString() + " " + type.toString(),
-            Toast.LENGTH_SHORT
-        ).show()
     }
 
 
