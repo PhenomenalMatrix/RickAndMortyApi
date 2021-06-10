@@ -87,6 +87,10 @@ dependencies {
     implementation "org.koin:koin-androidx-fragment:2.2.2"
 
 
+    // Paging
+    
+    implementation "androidx.paging:paging-runtime:3.0.0"
+
 
 
 
